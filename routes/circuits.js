@@ -16,7 +16,7 @@ router.get("/circuits", async (req, res) => {
 
 // Returns a circuit with the specified ref field
 router.get("/circuits/:ref", async (req, res) => {
-    // Select everything from the circuit row with the specified ref parameter
+    // Select everything from the circuit row with the specified circuitRef
     const { data, err } = await supabase
         .from("circuits")
         .select()
