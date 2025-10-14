@@ -1,5 +1,4 @@
 import express from 'express';
-// import supa from '@supabase/supabase-js';
 
 // Import all routers
 import circuitsRouter from './routes/circuits.js';
@@ -11,6 +10,7 @@ import qualifyingRouter from './routes/qualifying.js';
 import standingsRouter from './routes/standings.js';
 
 const app = express();
+const port = process.env.PORT || 8080;
 
 // Integrate routers within app (they all start with "/api" route)
 app.use("/api", [
@@ -24,7 +24,6 @@ app.use("/api", [
 ]);
 
 // Start the server
-app.listen(8080, () => {
-    console.log("Listening on port 8080");
-    console.log("http://localhost:8080/api/");
+app.listen(port, () => {
+    console.log(`Listening on port ${port}`);
 });
