@@ -27,7 +27,7 @@ router.get("/races/:raceId", async (req, res) => {
 
 // Returns the races within a given season
 router.get("/races/season/:year", async (req, res) => {
-    // Select everything from the races row with the specified year, ordered by round
+    // Select everything from the races rows with the specified year, ordered by round
     const { data, err } = await supabase
         .from("races")
         .select(`
@@ -71,7 +71,7 @@ router.get("/races/season/:year/:round", async (req, res) => {
 
 // Returns all races for a given circuit
 router.get("/races/circuits/:ref", async (req, res) => {
-    // Select everything from the races row with the specified circuitRef, ordered by year
+    // Select everything from the races rows with the specified circuitRef, ordered by year
     const { data, err } = await supabase
         .from("races")
         .select(`
@@ -100,7 +100,7 @@ router.get("/races/circuits/:ref/season/:start/:end", async (req, res) => {
         return;
     }
 
-    // Select everything from the races row with the specified circuitRef
+    // Select everything from the races rows with the specified circuitRef
     // and are between the given start and end years
     const { data, err } = await supabase
         .from("races")
