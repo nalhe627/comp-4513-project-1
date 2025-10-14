@@ -14,7 +14,7 @@ router.get("/constructors", async (req, res) => {
     res.send(data);
 });
 
-// Returns specific constructor
+// Returns a specific constructor based on the specified ref parameter
 router.get("/constructors/:ref", async (req, res) => {
     // Select everything from the constructor row with specific constructorRef 
     const { data, err } = await supabase
