@@ -1,5 +1,9 @@
 {
   "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "dev": "nodemon --env-file=.env"
+  },
   "dependencies": {
     "@supabase/supabase-js": "^2.75.0",
     "express": "^5.1.0"
