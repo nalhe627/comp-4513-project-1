@@ -72,6 +72,8 @@ router.get("/results/drivers/:ref/seasons/:start/:end", async (req, res) => {
             constructors!inner (name, constructorRef, nationality)
         `)
         // TODO: fix to make underscores in ref work
+        // they don't work because there's no data (not becuase of underscores)
+        // data from results table was lost due to exporting to supabase
         .eq("drivers.driverRef", req.params.ref)
         .gte("races.year", req.params.start)
         .lte("races.year", req.params.end);
