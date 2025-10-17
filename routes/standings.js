@@ -16,7 +16,7 @@ router.get("/standings/drivers/:raceId", async (req, res) => {
             races!inner (name, round, year, date)
         `)
         .eq("raceId", req.params.raceId)
-        .order("position");
+        .order("position", { ascending: true });
 
     if (data.length > 0) {
         res.send(data);
@@ -39,7 +39,7 @@ router.get("/standings/constructors/:raceId", async (req, res) => {
             races!inner (name, round, year, date)
         `)
         .eq("raceId", req.params.raceId)
-        .order("position");
+        .order("position", { ascending: true });
 
     if (data.length > 0) {
         res.send(data);

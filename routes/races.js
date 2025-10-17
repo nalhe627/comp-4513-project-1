@@ -37,7 +37,7 @@ router.get("/races/season/:year", async (req, res) => {
             circuits!inner (name, location, country)    
         `)
         .eq("year", req.params.year)
-        .order("round");
+        .order("round", { ascending: true });
 
     if (data.length > 0) {
         res.send(data);
@@ -81,7 +81,7 @@ router.get("/races/circuits/:ref", async (req, res) => {
             circuits!inner (name, location, country)    
         `)
         .eq("circuits.circuitRef", req.params.ref)
-        .order("year");
+        .order("year", { ascending: true });
 
     if (data.length > 0) {
         res.send(data);

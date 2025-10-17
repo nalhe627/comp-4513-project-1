@@ -10,6 +10,7 @@ import qualifyingRouter from './routes/qualifying.js';
 import standingsRouter from './routes/standings.js';
 
 const app = express();
+// Deployment build on Render uses an env variable for the port
 const port = process.env.PORT || 8080;
 
 // Integrate routers within app (they all start with "/api" route)

@@ -19,7 +19,7 @@ router.get("/results/:raceId", async (req, res) => {
         `)
         // Since some data was lost in exporting result table, raceId only goes up to ~700
         .eq("raceId", req.params.raceId)
-        .order("grid");
+        .order("grid", { ascending: true });
     
     if (data.length > 0) {
         res.send(data);
@@ -40,7 +40,6 @@ router.get("/results/driver/:ref", async (req, res) => {
             races!inner (name, round, year, date),
             constructors!inner (name, constructorRef, nationality)
         `)
-        // TODO: fix to make underscores in ref work
         .eq("drivers.driverRef", req.params.ref);
     
     if (data.length > 0) {
@@ -71,9 +70,6 @@ router.get("/results/drivers/:ref/seasons/:start/:end", async (req, res) => {
             races!inner (name, round, year, date),
             constructors!inner (name, constructorRef, nationality)
         `)
-        // TODO: fix to make underscores in ref work
-        // they don't work because there's no data (not becuase of underscores)
-        // data from results table was lost due to exporting to supabase
         .eq("drivers.driverRef", req.params.ref)
         .gte("races.year", req.params.start)
         .lte("races.year", req.params.end);

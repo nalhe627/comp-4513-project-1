@@ -41,8 +41,8 @@ router.get("/circuits/season/:year", async (req, res) => {
         `)
         .eq("races.year", req.params.year)
         // TODO: fix ordering not working (might have to do with not being 1-to-1 but 1-to-many)
-        // almost works if the circuits have only one race (e.g., 2015, not 2020)
-        .order("round", { referencedTable: "races", ascending: false });
+        // might need to select from races instead of circuits to order
+        .order("round", { referencedTable: "races", ascending: true });
 
     if (data.length > 0) {
         res.send(data);

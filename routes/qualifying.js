@@ -17,7 +17,7 @@ router.get("/qualifying/:raceId", async (req, res) => {
             constructors!inner (name, constructorRef, nationality)
         `)
         .eq("raceId", req.params.raceId)
-        .order("position");
+        .order("position", { ascending: true });
 
     if (data.length > 0) {
         res.send(data);
