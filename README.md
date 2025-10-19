@@ -31,9 +31,9 @@ Finally, run the node server:
 ```
 npm run dev
 ```
-The server should then be running in http://localhost:8080, where you can test the same API routes as below.
+The server should then be running at http://localhost:8080, where you can test the same API routes as below.
 
-### Example:
+## Example
 
 **Request:** `/api/circuits/monza`
 
