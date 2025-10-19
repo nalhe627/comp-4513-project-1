@@ -7,6 +7,7 @@ This project contains APIs for querying certain details from F1 data (e.g., driv
 [![Node.JS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)](https://nodejs.org/en)
 [![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB)](https://expressjs.com/)
 [![Supabase](https://img.shields.io/badge/Supabase-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white)](https://supabase.com/)
+[![Render](https://img.shields.io/badge/Render-8A05FF.svg?style=for-the-badge&logo=render&logoColor=white)](https://render.com/)
 
 ## Getting Started
 
@@ -54,6 +55,8 @@ The server should then be running in http://localhost:8080, where you can test t
 ```
 
 ## Test Links
+
+**Base URL:** [comp-4513-project-1.onrender.com](https://comp-4513-project-1.onrender.com)
 
 ### Circuits Route
 - [/api/circuits](https://comp-4513-project-1.onrender.com/api/circuits)
