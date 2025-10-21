@@ -25,7 +25,6 @@ router.get("/circuits/:ref", async (req, res) => {
     if (data.length > 0) {
         res.send(data);
     } else { // No data was returned
-        console.log(error);
         res.send({ error: `Could not find circuit with reference ${req.params.ref}` });
     }
 });
