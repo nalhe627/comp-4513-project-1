@@ -11,7 +11,7 @@ router.get("/standings/drivers/:raceId", async (req, res) => {
         .from("driverStandings")
         // Don't show raceId and driverId
         .select(`
-            driverStandingsId, points, position, wins,
+            driverStandingsId, points, position, positionText, wins,
             drivers!inner (driverRef, code, forename, surname),
             races!inner (name, round, year, date)
         `)
@@ -34,7 +34,7 @@ router.get("/standings/constructors/:raceId", async (req, res) => {
         .from("constructorStandings")
         // Don't show raceId and constructorId
         .select(`
-            constructorStandingsId, points, position, wins,
+            constructorStandingsId, points, position, positionText, wins,
             constructors!inner (constructorRef, name, nationality),
             races!inner (name, round, year, date)
         `)
