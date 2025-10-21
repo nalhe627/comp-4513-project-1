@@ -7,7 +7,7 @@ const router = express.Router();
 // Returns all circuits
 router.get("/circuits", async (req, res) => {
     // Select everything from circuits table
-    const { data, err } = await supabase
+    const { data, error } = await supabase
         .from("circuits")
         .select(); // equivalent to doing 'select("*")'
 
@@ -17,7 +17,7 @@ router.get("/circuits", async (req, res) => {
 // Returns a circuit with the specified ref field
 router.get("/circuits/:ref", async (req, res) => {
     // Select everything from the circuit row with the specified circuitRef
-    const { data, err } = await supabase
+    const { data, error } = await supabase
         .from("circuits")
         .select()
         .eq("circuitRef", req.params.ref);
@@ -25,6 +25,7 @@ router.get("/circuits/:ref", async (req, res) => {
     if (data.length > 0) {
         res.send(data);
     } else { // No data was returned
+        console.log(error);
         res.send({ error: `Could not find circuit with reference ${req.params.ref}` });
     }
 });
@@ -32,7 +33,7 @@ router.get("/circuits/:ref", async (req, res) => {
 // Returns all circuits in a given season 
 router.get("/circuits/season/:year", async (req, res) => {
     // Select everything from circuits with the specified year and in ascending order by round number
-    const { data, err } = await supabase
+    const { data, error } = await supabase
         .from("races")
         .select(`round, circuits!inner (*)`)
         .eq("year", req.params.year)

@@ -7,7 +7,7 @@ const router = express.Router();
 // Returns the current seasons driver standings for a specific race
 router.get("/standings/drivers/:raceId", async (req, res) => {
     // Select almost everything from driverStandings rows with specified raceId, ordered by position
-    const { data, err } = await supabase
+    const { data, error } = await supabase
         .from("driverStandings")
         // Don't show raceId and driverId
         .select(`
@@ -30,7 +30,7 @@ router.get("/standings/drivers/:raceId", async (req, res) => {
 // Returns the current seasons constructors standings for a specific race
 router.get("/standings/constructors/:raceId", async (req, res) => {
     // Select almost everything from constructorStandings rows with specified raceId, ordered by position
-    const { data, err } = await supabase
+    const { data, error } = await supabase
         .from("constructorStandings")
         // Don't show raceId and constructorId
         .select(`
@@ -40,8 +40,10 @@ router.get("/standings/constructors/:raceId", async (req, res) => {
         `)
         .eq("raceId", req.params.raceId)
         .order("position", { ascending: true });
-
-    if (data.length > 0) {
+    
+    if (error) { // Will catch invalid raceId
+        res.send(error);
+    } else if (data.length > 0) {
         res.send(data);
     } else { // No data was found
         res.send({ 

@@ -7,7 +7,7 @@ const router = express.Router();
 // Returns all circuits
 router.get("/constructors", async (req, res) => {
     // Select everything from the constructors table
-    const { data, err } = await supabase
+    const { data, error } = await supabase
         .from("constructors")
         .select();
 
@@ -17,7 +17,7 @@ router.get("/constructors", async (req, res) => {
 // Returns a specific constructor based on the specified ref parameter
 router.get("/constructors/:ref", async (req, res) => {
     // Select everything from the constructor row with specific constructorRef 
-    const { data, err } = await supabase
+    const { data, error } = await supabase
         .from("constructors")
         .select()
         .eq("constructorRef", req.params.ref);

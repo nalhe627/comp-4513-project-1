@@ -7,7 +7,7 @@ const router = express.Router();
 // Returns qualifying results for specific race
 router.get("/qualifying/:raceId", async (req, res) => {
     // Select almost everything from qualifying table with specified raceId, ordered by position
-    const { data, err } = await supabase
+    const { data, error } = await supabase
         .from("qualifying")
         // Don't show driverId, raceId, and constructorId
         .select(`

@@ -7,7 +7,7 @@ const router = express.Router();
 // Returns results of a specific race
 router.get("/results/:raceId", async (req, res) => {
     // Select almost everything from results rows with the specified raceId, ordered by grid
-    const { data, err } = await supabase
+    const { data, error } = await supabase
         .from("results")
         // Don't show raceId, driverId, and constructorId
         .select(`
@@ -30,7 +30,7 @@ router.get("/results/:raceId", async (req, res) => {
 // Returns results for a specific driver
 router.get("/results/driver/:ref", async (req, res) => {
     // Select almost everything from results rows with the specified driverRef
-    const { data, err } = await supabase
+    const { data, error } = await supabase
         .from("results")
         .select(`
             resultId, number, grid, position, positionText, positionOrder, points, laps, 
@@ -60,7 +60,7 @@ router.get("/results/drivers/:ref/seasons/:start/:end", async (req, res) => {
     
     // Select almost everything from results rows with the specified driverRef,
     // between the given start and end years
-    const { data, err } = await supabase
+    const { data, error } = await supabase
         .from("results")
         .select(`
             resultId, number, grid, position, positionText, positionOrder, points, laps, 

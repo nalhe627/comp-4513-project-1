@@ -7,7 +7,7 @@ const router = express.Router();
 // Returns all drivers
 router.get("/drivers", async (req, res) => {
     // Select everything from the drivers table
-    const { data, err } = await supabase
+    const { data, error } = await supabase
         .from("drivers")
         .select();
 
@@ -17,7 +17,7 @@ router.get("/drivers", async (req, res) => {
 // Returns a specific driver based on the ref parameter specified
 router.get("/drivers/:ref", async (req, res) => {
     // Select everything from the drivers row with the specific driverRef
-    const { data, err } = await supabase
+    const { data, error } = await supabase
         .from("drivers")
         .select()
         .eq("driverRef", req.params.ref); // Case sensitive
@@ -32,7 +32,7 @@ router.get("/drivers/:ref", async (req, res) => {
 // Returns drivers whose surname begins with the provided substring
 router.get("/drivers/search/:substr", async (req, res) => {
     // Select everything from the drivers rows with a surname starting with the substring
-    const { data, err } = await supabase
+    const { data, error } = await supabase
         .from("drivers")
         .select()
         .ilike("surname", `${req.params.substr}%`);
@@ -47,7 +47,7 @@ router.get("/drivers/search/:substr", async (req, res) => {
 // Returns drivers within a given race
 router.get("/drivers/race/:raceId", async (req, res) => {
     // Select everything from the drivers rows that have the raceId specified
-    const { data, err } = await supabase
+    const { data, error } = await supabase
         .from("drivers")
         // Not selecting all from results table to not show driver and race id
         .select(`
