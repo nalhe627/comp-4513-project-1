@@ -95,7 +95,7 @@ router.get("/races/circuits/:ref/season/:start/:end", async (req, res) => {
     // Send an error meessage if start year > end year
     if (req.params.start > req.params.end) {
         res.send({ 
-            error: `Start year ${req.params.start} is larger than end date ${req.params.end}` 
+            error: `Start year ${req.params.start} is larger than end year ${req.params.end}` 
         });
         return;
     }

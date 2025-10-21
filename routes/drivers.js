@@ -20,7 +20,7 @@ router.get("/drivers/:ref", async (req, res) => {
     const { data, err } = await supabase
         .from("drivers")
         .select()
-        .eq("driverRef", req.params.ref);
+        .eq("driverRef", req.params.ref); // Case sensitive
         
     if (data.length > 0) {
         res.send(data);
