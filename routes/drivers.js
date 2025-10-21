@@ -49,10 +49,14 @@ router.get("/drivers/race/:raceId", async (req, res) => {
     // Select everything from the drivers rows that have the raceId specified
     const { data, err } = await supabase
         .from("drivers")
+        // Not selecting all from results table to not show driver and race id
         .select(`
             *, 
             results!inner (
-                position, 
+                position,
+                positionText,
+                positionOrder,
+                grid, 
                 fastestLap, 
                 fastestLapTime, 
                 fastestLapSpeed, 
@@ -60,7 +64,11 @@ router.get("/drivers/race/:raceId", async (req, res) => {
                 points,
                 time,
                 milliseconds,
-                laps
+                laps,
+                number,
+                statusId,
+                constructorId,
+                resultId
             )
         `)
         .eq("results.raceId", req.params.raceId);

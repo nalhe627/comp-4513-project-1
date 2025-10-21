@@ -9,7 +9,7 @@ router.get("/circuits", async (req, res) => {
     // Select everything from circuits table
     const { data, err } = await supabase
         .from("circuits")
-        .select();
+        .select(); // equivalent to doing 'select("*")'
 
     res.send(data);
 });
@@ -31,18 +31,12 @@ router.get("/circuits/:ref", async (req, res) => {
 
 // Returns all circuits in a given season 
 router.get("/circuits/season/:year", async (req, res) => {
-    // Select everything from circuits + round and name of race table
-    // with the specified year and in ascending order by round number
+    // Select everything from circuits with the specified year and in ascending order by round number
     const { data, err } = await supabase
-        .from("circuits")
-        .select(`
-            circuitId, circuitRef, name, location, country,
-            lat, lng, alt, url, races!inner (round, name)
-        `)
-        .eq("races.year", req.params.year)
-        // TODO: fix ordering not working (might have to do with not being 1-to-1 but 1-to-many)
-        // might need to select from races instead of circuits to order
-        .order("round", { referencedTable: "races", ascending: true });
+        .from("races")
+        .select(`round, circuits!inner (*)`)
+        .eq("year", req.params.year)
+        .order("round", { ascending: true });
 
     if (data.length > 0) {
         res.send(data);

@@ -1,6 +1,7 @@
 import express from 'express';
 
 // Import all routers
+// Go to the routers folder to inspect the different routes
 import circuitsRouter from './routes/circuits.js';
 import constructorsRouter from './routes/constructors.js';
 import driversRouter from './routes/drivers.js';
