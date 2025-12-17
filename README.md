@@ -31,7 +31,10 @@ Finally, run the node server:
 ```
 npm run dev
 ```
-The server should then be running at http://localhost:8080, where you can test the same API routes as below.
+The server should then be running at http://localhost:8080.
+
+> [!WARNING]
+> Testing the API routes on the local node server **will not** work. To test the APIs, use the [test links](#test-links) provided below.
 
 ## Example
 
