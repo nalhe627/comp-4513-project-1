@@ -1,4 +1,4 @@
-# COMP 4513 Assignment 1
+# Formula 1 APIs
  
 ## Overview
 
